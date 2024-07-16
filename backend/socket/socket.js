@@ -10,8 +10,9 @@ const io = new Server(server, {
                 'http://localhost:3000'
                 ]
         ,
-        methods: ["GET", "POST"],
-        credentials: true
+         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
     }
 });
 

@@ -18,7 +18,7 @@ dotenv.config();
 app.use(express.json()) //to parse the incoming request with json payloads
 app.use(cookieParser()) //to parse the cookies
 const corsOptions = {
-    origin: '*',
+    origin: 'https://prismatic-blini-51bf7a.netlify.app',
     credentials: true
 }
 app.use(cors(corsOptions))

@@ -18,7 +18,7 @@ dotenv.config();
 app.use(express.json()) //to parse the incoming request with json payloads
 app.use(cookieParser()) //to parse the cookies
 const corsOptions = {
-    origin: ['https://prismatic-blini-51bf7a.netlify.app',
+    origin: ['https://remarkable-otter-6c6e4a.netlify.app',
              'http://localhost:3000'
         ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

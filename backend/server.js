@@ -21,7 +21,9 @@ const corsOptions = {
     origin: ['https://prismatic-blini-51bf7a.netlify.app',
              'http://localhost:3000'
         ],
-    credentials: true
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }
 app.use(cors(corsOptions))
 

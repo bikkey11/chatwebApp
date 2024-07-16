@@ -8,11 +8,10 @@ const io = new Server(server, {
     cors: {
         origin: ['https://prismatic-blini-51bf7a.netlify.app/login',
                 'http://localhost:3000'
-                ]
-        ,
-         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true // Allow credentials (cookies, authorization headers, etc.)
+                ],
+               methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+              allowedHeaders: ['Content-Type', 'Authorization'],
+              credentials: true // Allow credentials (cookies, authorization headers, etc.)
     }
 });
 

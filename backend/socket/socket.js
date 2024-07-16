@@ -6,7 +6,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ['https://6695f44ff619af922c4dcb29--prismatic-blini-51bf7a.netlify.app'],
+        origin: ['https://prismatic-blini-51bf7a.netlify.app/login'],
         methods: ["GET", "POST"]
     }
 });

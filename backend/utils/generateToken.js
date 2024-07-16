@@ -6,10 +6,11 @@ const generateTokenAndSetCookie = (user_id, res) => {
         expiresIn: "15d"
     })
     res.cookie("userToken", token, {
-        maxAge: 15 * 24 * 60 * 60 * 1000, //in milliseconds
-        // httpOnly: true, //prevent xss attack 
-        sameSite: "strict", //csrf attack
-        secure:false  // process.env.NODE_ENV !== "development"
+        httpOnly: true, // The cookie is inaccessible to JavaScript's Document.cookie API; it's only sent to the server.
+        secure: true, // The cookie is only sent over HTTPS.
+        sameSite: 'None', // The cookie is sent with cross-origin requests.
+        maxAge: 24 * 60 * 60 * 1000, // The cookie will be removed after 24 hours.
+        path: '/', // The path where the cookie is accessible.
     });
 
 

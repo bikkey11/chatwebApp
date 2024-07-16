@@ -1,5 +1,6 @@
 import Conversation from "../models/conversationModel.js";
 import Message from "../models/messageMode.js";
+import { io, getReceiverSocketId } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
     try {
@@ -29,8 +30,16 @@ export const sendMessage = async (req, res) => {
         // await conversation.save();
         // await newMessage.save();
         await Promise.all([conversation.save(), newMessage.save()])
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        const senderSocketId = getReceiverSocketId(senderId)
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("newMessage", newMessage)
+        }
+        if (senderSocketId) {
+            io.to(senderSocketId).emit("newMessage", newMessage)
+        }
 
-        res.status(201).json(newMessage);
+
 
 
 
@@ -48,7 +57,7 @@ export const getMessage = async (req, res) => {
         const { id: friendId } = req.params;
         const senderId = req.user._id;
 
-        const conversation =await Conversation.findOne({
+        const conversation = await Conversation.findOne({
             members: { $all: [senderId, friendId] },
         }).populate("messages");//not reference to message but actual messages using populate
 
@@ -66,3 +75,4 @@ export const getMessage = async (req, res) => {
 
     }
 }
+

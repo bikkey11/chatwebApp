@@ -87,7 +87,6 @@ export const Register = async (req, res) => {
         }
 
     } catch (error) {
-        console.log("Error in signup controller", error.message)
         res.status(500).json({ error: "Internal Server Error Occured" })
 
     }

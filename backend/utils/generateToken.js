@@ -7,7 +7,7 @@ const generateTokenAndSetCookie = (user_id, res) => {
     })
     res.cookie("userToken", token, {
         maxAge: 15 * 24 * 60 * 60 * 1000, //in milliseconds
-        httpOnly: true, //prevent xss attack 
+        // httpOnly: true, //prevent xss attack 
         sameSite: "strict", //csrf attack
         secure:false  // process.env.NODE_ENV !== "development"
     });
